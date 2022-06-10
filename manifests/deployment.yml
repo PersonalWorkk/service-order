@@ -1,0 +1,24 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: serviceorder-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceorder
+  template:
+    metadata:
+      labels:
+        app: serviceorder 
+    spec:
+      containers:
+        - name: serviceorder 
+          image: razvan426823wedeliver.azurecr.io/serviceorder
+          imagePullPolicy: Always
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+            - name: SPRING
+          ports:
+          - containerPort: 8080
