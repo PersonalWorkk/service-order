@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: serviceorder 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceorder
+  template:
+    metadata:
+      labels:
+        app: serviceorder 
+    spec:
+      containers:
+        - name: serviceorder 
+          image: razvan426823wedeliver.azurecr.io/serviceorder
+          ports:
+          - containerPort: 80
